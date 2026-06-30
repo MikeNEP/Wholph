@@ -264,6 +264,13 @@ fun SwitchUserContent(
                         }
                     }
                     Text(
+                        text = "ESPE Player",
+                        style = MaterialTheme.typography.headlineMedium,
+                        color = MaterialTheme.colorScheme.primary,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier.fillMaxWidth(),
+                    )
+                    Text(
                         text = "Enter username/password to login to ${server.name ?: server.url}",
                         style = MaterialTheme.typography.titleMedium,
                         color = MaterialTheme.colorScheme.onSurface,

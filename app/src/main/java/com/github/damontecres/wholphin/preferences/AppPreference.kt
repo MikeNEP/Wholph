@@ -840,7 +840,7 @@ sealed interface AppPreference<Pref, T> {
         val PlayerBackendPref =
             AppChoicePreference<AppPreferences, PlayerBackend>(
                 title = R.string.player_backend,
-                defaultValue = PlayerBackend.EXO_PLAYER,
+                defaultValue = PlayerBackend.MPV,
                 getter = { it.playbackPreferences.playerBackend },
                 setter = { prefs, value ->
                     prefs.updatePlaybackPreferences { playerBackend = value }

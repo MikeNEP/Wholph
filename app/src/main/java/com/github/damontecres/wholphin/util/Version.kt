@@ -111,5 +111,26 @@ data class Version(
                 Version(major, minor, patch, numCommits, hash)
             }
         }
+
+        /**
+         * Find and parse the first version-like token anywhere within [text].
+         *
+         * Unlike [tryFromString] (which requires the whole string to be a version),
+         * this allows release names such as "ESPE Player v1.1.2" to be parsed.
+         */
+        fun find(text: String?): Version? {
+            if (text == null) {
+                return null
+            }
+            // Try a strict full-string parse first, then fall back to searching within.
+            tryFromString(text.trim())?.let { return it }
+            val m = VERSION_REGEX.find(text) ?: return null
+            val major = m.groups[1]!!.value.toInt()
+            val minor = m.groups[2]!!.value.toInt()
+            val patch = m.groups[3]!!.value.toInt()
+            val numCommits = m.groups[5]?.value?.toInt()
+            val hash = m.groups[6]?.value
+            return Version(major, minor, patch, numCommits, hash)
+        }
     }
 }

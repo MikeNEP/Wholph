@@ -4,8 +4,10 @@ import android.app.Application
 import android.os.Build
 import android.os.StrictMode
 import android.util.Log
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.compose.runtime.Composer
 import androidx.compose.runtime.ExperimentalComposeRuntimeApi
+import androidx.core.os.LocaleListCompat
 import androidx.hilt.work.HiltWorkerFactory
 import androidx.work.Configuration
 import dagger.hilt.android.HiltAndroidApp
@@ -53,6 +55,11 @@ class WholphinApplication :
 
     override fun onCreate() {
         super.onCreate()
+        // Default the UI language to Spanish on first run (only if the user
+        // has not explicitly chosen an app language yet).
+        if (AppCompatDelegate.getApplicationLocales().isEmpty) {
+            AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags("es"))
+        }
         if (BuildConfig.DEBUG) {
             StrictMode.setThreadPolicy(
                 StrictMode.ThreadPolicy
@@ -95,9 +102,9 @@ class WholphinApplication :
                 )
             dialog {
                 text =
-                    "Wholphin has crashed! Would you like to attempt to " +
+                    "ESPE Player has crashed! Would you like to attempt to " +
                     "send a crash report to your Jellyfin server?"
-                title = "Wholphin Crash Report"
+                title = "ESPE Player Crash Report"
                 positiveButtonText = "Send"
                 negativeButtonText = "Do not send"
             }

@@ -223,7 +223,7 @@ private fun SwitchServerContentInternal(
         }
 
         if (showAddServer) {
-            var showEnterAddress by remember { mutableStateOf(false) }
+            var showEnterAddress by remember { mutableStateOf(true) }
 
             LaunchedEffect(Unit) {
                 viewModel.clearAddServerState()
@@ -349,7 +349,7 @@ private fun SwitchServerContentInternal(
                     } else {
                         // Show enter server address form
                         val addServerState = state.addServerState
-                        var url by remember { mutableStateOf("") }
+                        var url by remember { mutableStateOf("moviespe.sytes.net") }
                         val submit = {
                             viewModel.addServer(url)
                         }
