@@ -1,0 +1,36 @@
+# ---------------------------------------------------------------------------
+# Wholphin - local.properties template
+# ---------------------------------------------------------------------------
+# Copy this file to "local.properties" and fill in the values below.
+# "local.properties" is gitignored, so any secrets you put here stay OUT of
+# version control.
+#
+#   cp local.properties.example local.properties
+# ---------------------------------------------------------------------------
+
+# Android SDK location.
+# Android Studio normally writes this automatically the first time you open the
+# project, so you usually do NOT need to set it by hand.
+#   Windows : sdk.dir=C\:\\Users\\YourUser\\AppData\\Local\\Android\\Sdk
+#   macOS   : sdk.dir=/Users/youruser/Library/Android/sdk
+#   Linux   : sdk.dir=/home/youruser/Android/Sdk
+#sdk.dir=
+
+# ---------------------------------------------------------------------------
+# Wholphin Extensions: native libmpv + extra ExoPlayer codecs (ffmpeg / av1)
+# ---------------------------------------------------------------------------
+# These enable the NATIVE MPV player and software decoders for ExoPlayer.
+# Without them the build falls back to "wholphin-mpv-stub", and selecting MPV
+# in the app will fail at runtime (MpvStubException).
+#
+# How to get the credentials:
+#   1. Create a CLASSIC GitHub Personal Access Token (NOT fine-grained):
+#      GitHub -> Settings -> Developer settings -> Personal access tokens
+#      -> Tokens (classic) -> Generate new token (classic)
+#   2. Select ONLY the "read:packages" scope.
+#   3. Copy the token (it starts with "ghp_") and paste it below.
+#
+# Note: you may instead place these two lines in your GLOBAL Gradle properties
+# (~/.gradle/gradle.properties). Both locations are supported.
+WholphinExtensionsUsername=your_github_username
+WholphinExtensionsPassword=ghp_your_classic_token_here
