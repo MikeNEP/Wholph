@@ -156,7 +156,7 @@ configure<ApplicationExtension> {
             isDefault = true
             manifestPlaceholders += mapOf(featureLeanback to false)
             setFeatureFlag(featureUpdate, true)
-            setFeatureFlag(featureDiscover, true)
+            setFeatureFlag(featureDiscover, false)
         }
         create("appstore") {
             dimension = "version"
