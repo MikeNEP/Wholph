@@ -161,7 +161,7 @@ class UpdateChecker
                 if (it.isSuccessful && it.body != null) {
                     val result = Json.parseToJsonElement(it.body!!.string())
                     val name = result.jsonObject["name"]?.jsonPrimitive?.contentOrNull
-                    val version = Version.tryFromString(name)
+                    val version = Version.find(name)
                     val publishedAt =
                         result.jsonObject["published_at"]?.jsonPrimitive?.contentOrNull
                     val body = result.jsonObject["body"]?.jsonPrimitive?.contentOrNull
