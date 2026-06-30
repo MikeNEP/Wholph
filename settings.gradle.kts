@@ -48,6 +48,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Wholphin"
+rootProject.name = "ESPEPlayer"
 include(":app")
 include(":wholphin-mpv-stub")
