@@ -1,7 +1,7 @@
 package com.github.damontecres.wholphin.util
 
 import android.widget.Toast
-import com.github.damontecres.wholphin.ESPEPlayerApplication
+import com.github.damontecres.wholphin.WholphinApplication
 import com.github.damontecres.wholphin.ui.showToast
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineExceptionHandler
@@ -33,7 +33,7 @@ class ExceptionHandler(
         if (autoToast) {
             runBlocking {
                 showToast(
-                    ESPEPlayerApplication.instance,
+                    WholphinApplication.instance,
                     "Error: ${exception.message}",
                     Toast.LENGTH_LONG,
                 )

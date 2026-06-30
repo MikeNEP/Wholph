@@ -38,7 +38,7 @@ import javax.inject.Inject
 import kotlin.time.Duration.Companion.milliseconds
 
 @AndroidEntryPoint
-class ESPEPlayerDreamService :
+class WholphinDreamService :
     DreamService(),
     SavedStateRegistryOwner {
     @Inject
@@ -84,8 +84,8 @@ class ESPEPlayerDreamService :
         val itemFlow = screensaverService.createItemFlow(lifecycleScope)
         setContentView(
             ComposeView(this).apply {
-                setViewTreeLifecycleOwner(this@ESPEPlayerDreamService)
-                setViewTreeSavedStateRegistryOwner(this@ESPEPlayerDreamService)
+                setViewTreeLifecycleOwner(this@WholphinDreamService)
+                setViewTreeSavedStateRegistryOwner(this@WholphinDreamService)
                 setContent {
                     val user by serverRepository.currentUserFlow.collectAsState(null)
                     if (user != null) {
