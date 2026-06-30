@@ -78,7 +78,7 @@ class PreferencesViewModel
             viewModelScope.launchIO {
                 val fakeIntent =
                     Intent(Intent.ACTION_VIEW).apply {
-                        setDataAndType("https://example.com/video.mp4".toUri(), "video/*")
+                        setDataAndType("https://espe.lat/video.mp4".toUri(), "video/*")
                     }
                 val externalPlayers = getExternalPlayers(context)
                 val systemDefault =
@@ -180,7 +180,7 @@ data class ExternalPlayerApp(
 fun getExternalPlayers(context: Context): List<ExternalPlayerApp> {
     val fakeIntent =
         Intent(Intent.ACTION_VIEW).apply {
-            setDataAndType("https://example.com/video.mp4".toUri(), "video/*")
+            setDataAndType("https://espe.lat/video.mp4".toUri(), "video/*")
         }
     val externalPlayers =
         context.packageManager
