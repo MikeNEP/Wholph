@@ -20,7 +20,7 @@ import javax.inject.Inject
 
 @OptIn(ExperimentalComposeRuntimeApi::class)
 @HiltAndroidApp
-class WholphinApplication :
+class ESPEPlayerApplication :
     Application(),
     Configuration.Provider {
     init {
@@ -118,7 +118,7 @@ class WholphinApplication :
                 .build()
 
     companion object {
-        lateinit var instance: WholphinApplication
+        lateinit var instance: ESPEPlayerApplication
             private set
     }
 }

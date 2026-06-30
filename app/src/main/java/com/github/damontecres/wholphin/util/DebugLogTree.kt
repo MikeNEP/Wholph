@@ -8,7 +8,7 @@ import timber.log.Timber
  * Enable debug logging via [Timber] if enabled in the app settings
  */
 class DebugLogTree private constructor() : Timber.Tree() {
-    // Only add logging for below INFO, production logger in WholphinApplication logs >=INFO
+    // Only add logging for below INFO, production logger in ESPEPlayerApplication logs >=INFO
     override fun isLoggable(
         tag: String?,
         priority: Int,

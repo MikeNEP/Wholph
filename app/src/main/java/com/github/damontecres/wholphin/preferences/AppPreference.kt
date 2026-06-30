@@ -7,7 +7,7 @@ import androidx.core.content.edit
 import androidx.preference.PreferenceManager
 import com.github.damontecres.wholphin.BuildConfig
 import com.github.damontecres.wholphin.R
-import com.github.damontecres.wholphin.WholphinApplication
+import com.github.damontecres.wholphin.ESPEPlayerApplication
 import com.github.damontecres.wholphin.services.UpdateChecker
 import com.github.damontecres.wholphin.ui.nav.Destination
 import com.github.damontecres.wholphin.ui.preferences.ConditionalPreferences
@@ -74,7 +74,7 @@ sealed interface AppPreference<Pref, T> {
                 },
                 summarizer = { value ->
                     if (value != null) {
-                        WholphinApplication.instance.resources.getQuantityString(
+                        ESPEPlayerApplication.instance.resources.getQuantityString(
                             R.plurals.seconds,
                             value.toInt(),
                             value.toInt(),
@@ -103,7 +103,7 @@ sealed interface AppPreference<Pref, T> {
                 },
                 summarizer = { value ->
                     if (value != null) {
-                        WholphinApplication.instance.resources.getQuantityString(
+                        ESPEPlayerApplication.instance.resources.getQuantityString(
                             R.plurals.seconds,
                             value.toInt(),
                             value.toInt(),
@@ -127,7 +127,7 @@ sealed interface AppPreference<Pref, T> {
                 },
                 summarizer = { value ->
                     value?.let {
-                        WholphinApplication.instance.getString(
+                        ESPEPlayerApplication.instance.getString(
                             R.string.decimal_seconds,
                             value / 1000.0,
                         )
@@ -188,9 +188,9 @@ sealed interface AppPreference<Pref, T> {
                     if (value != null) {
                         val v = MaxDaysNextUpOptions.getOrNull(value.toInt()) ?: -1
                         if (v == -1) {
-                            WholphinApplication.instance.getString(R.string.no_limit)
+                            ESPEPlayerApplication.instance.getString(R.string.no_limit)
                         } else {
-                            WholphinApplication.instance.resources.getQuantityString(
+                            ESPEPlayerApplication.instance.resources.getQuantityString(
                                 R.plurals.days,
                                 v,
                                 v.toString(),
@@ -278,7 +278,7 @@ sealed interface AppPreference<Pref, T> {
                 },
                 summarizer = { value ->
                     if (value == 0L) {
-                        WholphinApplication.instance.getString(R.string.disabled)
+                        ESPEPlayerApplication.instance.getString(R.string.disabled)
                     } else {
                         "${value}s"
                     }
@@ -300,9 +300,9 @@ sealed interface AppPreference<Pref, T> {
                     if (value == null) {
                         ""
                     } else if (value == 0L) {
-                        WholphinApplication.instance.getString(R.string.immediate)
+                        ESPEPlayerApplication.instance.getString(R.string.immediate)
                     } else {
-                        WholphinApplication.instance.resources.getQuantityString(
+                        ESPEPlayerApplication.instance.resources.getQuantityString(
                             R.plurals.seconds,
                             value.toInt(),
                             value.toInt(),
@@ -328,9 +328,9 @@ sealed interface AppPreference<Pref, T> {
                     if (value == null) {
                         ""
                     } else if (value == 0L) {
-                        WholphinApplication.instance.getString(R.string.disabled)
+                        ESPEPlayerApplication.instance.getString(R.string.disabled)
                     } else {
-                        WholphinApplication.instance.resources.getQuantityString(
+                        ESPEPlayerApplication.instance.resources.getQuantityString(
                             R.plurals.hours,
                             value.toInt(),
                             value.toInt(),
@@ -552,7 +552,7 @@ sealed interface AppPreference<Pref, T> {
         val UpdateUrl =
             AppStringPreference<AppPreferences>(
                 title = R.string.update_url,
-                defaultValue = "https://api.github.com/repos/damontecres/Wholphin/releases/latest",
+                defaultValue = "https://api.github.com/repos/MikeNEP/Wholph/releases/latest",
                 getter = { it.updateUrl },
                 setter = { prefs, value ->
                     prefs.update { updateUrl = value }
@@ -705,12 +705,12 @@ sealed interface AppPreference<Pref, T> {
                 defaultValue = true,
                 getter = {
                     PreferenceManager
-                        .getDefaultSharedPreferences(WholphinApplication.instance)
+                        .getDefaultSharedPreferences(ESPEPlayerApplication.instance)
                         .getBoolean("acra.enable", true)
                 },
                 setter = { prefs, value ->
                     PreferenceManager
-                        .getDefaultSharedPreferences(WholphinApplication.instance)
+                        .getDefaultSharedPreferences(ESPEPlayerApplication.instance)
                         .edit {
                             putBoolean("acra.enable", value)
                         }
@@ -1035,7 +1035,7 @@ sealed interface AppPreference<Pref, T> {
                 summarizer = { value ->
                     if (value != null) {
                         val seconds = value / 1000.0
-                        WholphinApplication.instance.resources.getString(
+                        ESPEPlayerApplication.instance.resources.getString(
                             R.string.decimal_seconds,
                             seconds,
                         )
