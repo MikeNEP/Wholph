@@ -33,8 +33,21 @@ val av1ModuleExists =
     providers.provider { project.file("libs/lib-decoder-av1-release.aar").exists() }
 val mpvModuleExists =
     providers.provider { project.file("libs/wholphin-mpv-release.aar").exists() }
+// Credentials for the Wholphin Extensions maven repo may live in the global
+// Gradle properties OR in the project's local.properties (gitignored). Detect
+// both so the prebuilt libmpv/ffmpeg/av1 artifacts are used when available.
+val localPropertiesForExtensions =
+    Properties().apply {
+        val localPropertiesFile = rootProject.file("local.properties")
+        if (localPropertiesFile.exists()) {
+            localPropertiesFile.inputStream().use { load(it) }
+        }
+    }
 val extensionsRepoActive =
-    providers.provider { project.hasProperty("WholphinExtensionsUsername") }
+    providers.provider {
+        project.hasProperty("WholphinExtensionsUsername") ||
+            !localPropertiesForExtensions.getProperty("WholphinExtensionsUsername").isNullOrBlank()
+    }
 
 // See https://issuetracker.google.com/issues/402800800
 val isBuildingBundle =
